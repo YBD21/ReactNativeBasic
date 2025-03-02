@@ -6,8 +6,8 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { Stack } from "expo-router";
-import { useState } from "react";
-import useStore from "../../hooks/store/useStore"; // added store import
+import { useState, useEffect } from "react"; // Added useEffect
+import useStore from "../../hooks/store/useStore";
 
 const CalculateVatPage = () => {
   const [quantity, setQuantity] = useState("");
@@ -19,7 +19,7 @@ const CalculateVatPage = () => {
     totalPayable: number;
   } | null>(null);
 
-  const { retailRate, depoRate } = useStore(); // extract rates from store
+  const { retailRate, depoRate } = useStore();
 
   const RateButton = ({
     type,
@@ -30,13 +30,15 @@ const CalculateVatPage = () => {
   }) => (
     <TouchableOpacity
       onPress={() => setSelectedRate(type)}
-      className={`flex-1 p-3 rounded-lg ${
-        selectedRate === type ? "bg-black" : "bg-white border border-gray-300"
+      className={`flex-1 py-3 px-6 rounded-lg ${
+        selectedRate === type
+          ? "bg-black"
+          : "bg-gray-100 border border-gray-200"
       }`}
     >
       <Text
-        className={`text-center font-semibold ${
-          selectedRate === type ? "text-white" : "text-black"
+        className={`text-center font-medium ${
+          selectedRate === type ? "text-white" : "text-gray-900"
         }`}
       >
         {label}
@@ -44,15 +46,20 @@ const CalculateVatPage = () => {
     </TouchableOpacity>
   );
 
-  const handleCalculate = () => {
+  // Auto calculate when quantity or selectedRate changes
+  useEffect(() => {
     const qty = parseFloat(quantity) || 0;
-    const currentRate = selectedRate === "retail" ? retailRate : depoRate;
-    const perUnit = currentRate / 1.13;
-    const totalValue = perUnit * qty;
-    const tax = ((currentRate * qty) / 1.13) * 0.13;
-    const totalPayable = totalValue + tax;
-    setResult({ perUnit, totalValue, tax, totalPayable });
-  };
+    if (qty > 0) {
+      const currentRate = selectedRate === "retail" ? retailRate : depoRate;
+      const perUnit = currentRate / 1.13;
+      const totalValue = perUnit * qty;
+      const tax = ((currentRate * qty) / 1.13) * 0.13;
+      const totalPayable = totalValue + tax;
+      setResult({ perUnit, totalValue, tax, totalPayable });
+    } else {
+      setResult(null);
+    }
+  }, [quantity, selectedRate, retailRate, depoRate]);
 
   return (
     <>
@@ -86,14 +93,6 @@ const CalculateVatPage = () => {
             <RateButton type="retail" label="Retail Rate" />
             <RateButton type="depo" label="Depo Rate" />
           </View>
-          <TouchableOpacity
-            onPress={handleCalculate}
-            className="bg-black p-4 rounded-lg shadow-md"
-          >
-            <Text className="text-white text-center font-bold text-lg">
-              Calculate VAT
-            </Text>
-          </TouchableOpacity>
 
           {result && (
             <View className="mt-6 p-4 bg-white rounded-lg shadow border border-gray-200">

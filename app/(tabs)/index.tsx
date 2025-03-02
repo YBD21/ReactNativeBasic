@@ -35,15 +35,13 @@ const NavigationButton = ({
   <Link href={href} asChild>
     <Pressable
       className={`${
-        primary
-          ? "bg-black active:bg-gray-800 shadow-lg"
-          : "bg-gray-100 border border-gray-200 active:bg-gray-200"
-      } px-8 py-4 rounded-lg`}
+        primary ? "bg-black" : "bg-gray-100 border border-gray-200"
+      } py-3 px-6 rounded-lg`}
     >
       <Text
         className={`${
           primary ? "text-white" : "text-gray-900"
-        } font-medium text-center text-lg tracking-wide`}
+        } font-medium text-center text-lg`}
       >
         {label}
       </Text>

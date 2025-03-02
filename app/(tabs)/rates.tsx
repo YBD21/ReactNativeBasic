@@ -68,35 +68,35 @@ const RateCard: React.FC<RateCardProps> = ({
       {isEditing ? (
         <>
           <TouchableOpacity
-            className="bg-black py-2 px-4 rounded-full flex-row items-center flex-1 justify-center"
+            className="bg-black py-3 px-6 rounded-lg flex-row items-center flex-1 justify-center"
             onPress={onUpdate}
           >
             <MaterialIcons name="save" size={16} color="white" />
             <Text className="text-white ml-2 font-medium">Save</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            className="border border-gray-400 py-2 px-4 rounded-full flex-row items-center flex-1 justify-center"
+            className="bg-gray-100 border border-gray-200 py-3 px-6 rounded-lg flex-row items-center flex-1 justify-center"
             onPress={onCancel}
           >
             <MaterialIcons name="close" size={16} color="#666" />
-            <Text className="text-gray-600 ml-2 font-medium">Cancel</Text>
+            <Text className="text-gray-900 ml-2 font-medium">Cancel</Text>
           </TouchableOpacity>
         </>
       ) : (
         <>
           <TouchableOpacity
-            className="bg-black py-2 px-4 rounded-full flex-row items-center flex-1 justify-center"
+            className="bg-black py-3 px-6 rounded-lg flex-row items-center flex-1 justify-center"
             onPress={() => setEditing(true)}
           >
             <MaterialIcons name="edit" size={16} color="white" />
             <Text className="text-white ml-2 font-medium">Edit</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            className="border border-red-500 py-2 px-4 rounded-full flex-row items-center flex-1 justify-center"
+            className="bg-red-600 py-3 px-6 rounded-lg flex-row items-center flex-1 justify-center"
             onPress={onDelete}
           >
-            <MaterialIcons name="delete-outline" size={16} color="#EF4444" />
-            <Text className="text-red-500 ml-2 font-medium">Delete</Text>
+            <MaterialIcons name="delete-outline" size={16} color="white" />
+            <Text className="text-white ml-2 font-medium">Delete</Text>
           </TouchableOpacity>
         </>
       )}
