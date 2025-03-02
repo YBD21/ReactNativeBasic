@@ -79,15 +79,13 @@ const CalculateVatPage = () => {
               placeholderTextColor="#666"
             />
           </View>
-
           <Text className="text-sm font-semibold mb-4 text-gray-700">
             Select Rate Type
           </Text>
-          <View className="flex-row space-x-4 mb-6">
+          <View className="flex-row space-x-4 mb-6 gap-6">
             <RateButton type="retail" label="Retail Rate" />
             <RateButton type="depo" label="Depo Rate" />
           </View>
-
           <TouchableOpacity
             onPress={handleCalculate}
             className="bg-black p-4 rounded-lg shadow-md"
@@ -99,23 +97,61 @@ const CalculateVatPage = () => {
 
           {result && (
             <View className="mt-6 p-4 bg-white rounded-lg shadow border border-gray-200">
-              <Text className="text-lg font-semibold text-black mb-2">
+              <Text className="text-lg font-semibold text-black mb-4">
                 Calculation Result
               </Text>
-              <View className="space-y-2">
-                <Text className="text-gray-600">
-                  प्रति इकाई (Per Unit): {result.perUnit.toFixed(2)}
-                </Text>
-                <Text className="text-gray-600">
-                  जम्मा मूल्य (Total Value): {result.totalValue.toFixed(2)}
-                </Text>
-                <Text className="text-gray-600">
-                  13% Tax: {result.tax.toFixed(2)}
-                </Text>
-                <Text className="text-gray-600">
-                  जम्मा तिर्नु पर्ने रकम (Total Payable):{" "}
-                  {result.totalPayable.toFixed(2)}
-                </Text>
+              <View className="space-y-3">
+                <View className="flex-row justify-between py-2 border-b border-gray-200">
+                  <Text className="text-gray-600 flex-1">
+                    Per Unit (प्रति इकाई)
+                  </Text>
+                  <Text className="text-black font-medium">
+                    {result.perUnit.toFixed(2)}
+                  </Text>
+                </View>
+
+                <View className="flex-row justify-between py-2 border-b border-gray-200">
+                  <Text className="text-gray-600 flex-1">
+                    Total Value (जम्मा मूल्य)
+                  </Text>
+                  <Text className="text-black font-medium">
+                    {result.totalValue.toFixed(2)}
+                  </Text>
+                </View>
+
+                <View className="flex-row justify-between py-2 border-b border-gray-200">
+                  <Text className="text-gray-600 flex-1">Total (जम्मा)</Text>
+                  <Text className="text-black font-medium">
+                    {result.totalValue.toFixed(2)}
+                  </Text>
+                </View>
+
+                <View className="flex-row justify-between py-2 border-b border-gray-200">
+                  <Text className="text-gray-600 flex-1">
+                    Taxable Value (कर लाग्ने मूल्य)
+                  </Text>
+                  <Text className="text-black font-medium">
+                    {result.totalValue.toFixed(2)}
+                  </Text>
+                </View>
+
+                <View className="flex-row justify-between py-2 border-b border-gray-200">
+                  <Text className="text-gray-600 flex-1">
+                    13% Tax (१३% प्रतिशतले कर)
+                  </Text>
+                  <Text className="text-black font-medium">
+                    {result.tax.toFixed(2)}
+                  </Text>
+                </View>
+
+                <View className="flex-row justify-between py-2 bg-gray-50 rounded-md p-2">
+                  <Text className="text-gray-800 font-semibold flex-1">
+                    Total Payable (जम्मा तिर्नु पर्ने रकम)
+                  </Text>
+                  <Text className="text-black font-bold">
+                    {result.totalPayable.toFixed(2)}
+                  </Text>
+                </View>
               </View>
             </View>
           )}
