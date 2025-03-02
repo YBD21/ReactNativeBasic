@@ -5,7 +5,14 @@ import { Stack } from "expo-router";
 const AboutPage = () => {
   return (
     <>
-      <Stack.Screen options={{ title: "About" }} />
+      <Stack.Screen
+        options={{
+          title: "View",
+          headerStyle: { backgroundColor: "black" },
+          headerTintColor: "white",
+        }}
+      />
+
       <StatusBar style="dark" />
       <ScrollView className="flex-1 bg-white">
         <View className="p-5">
