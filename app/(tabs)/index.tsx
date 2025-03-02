@@ -60,9 +60,9 @@ export default function Index() {
         <Header />
         <WelcomeText />
         <View className="flex items-center justify-center">
-          <View className="space-y-5 w-[85%] max-w-sm">
+          <View className="space-y-5 w-[85%] max-w-sm gap-4">
             <NavigationButton href="/rates" label="Rates Page" primary />
-            <NavigationButton href="/about" label="Explore" />
+            <NavigationButton href="/about" label="View" primary />
           </View>
         </View>
       </View>
