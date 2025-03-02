@@ -1,5 +1,5 @@
 import React from "react";
-import { Modal, View, Text, TouchableOpacity } from "react-native";
+import { Modal, View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { BlurView } from "expo-blur";
 
@@ -27,50 +27,121 @@ const DeleteModal: React.FC<DeleteModalProps> = ({
       visible={visible}
       onRequestClose={onCancel}
     >
-      <View className="flex-1 bg-black/50 justify-center items-center px-4">
-        <View className="w-full max-w-sm bg-white rounded-2xl overflow-hidden shadow-lg">
+      <BlurView intensity={15} tint="dark" style={styles.blurContainer}>
+        <View style={styles.modalContainer}>
           {/* Header */}
-          <View className="bg-red-50 p-5 items-center">
-            <View className="bg-red-100 rounded-full p-3 mb-2">
-              <MaterialIcons name="delete-outline" size={30} color="#EF4444" />
+          <View style={styles.header}>
+            <View style={styles.iconContainer}>
+              <MaterialIcons name="delete-outline" size={32} color="#DC2626" />
             </View>
-            <Text className="text-xl font-bold text-red-500">
-              Delete {rateText} Rate !
-            </Text>
+            <Text style={styles.headerText}>Delete {rateText} Rate</Text>
           </View>
 
-          {/* Body */}
-          <View className="p-5">
-            <Text className="text-base text-gray-600 text-center mb-6">
+          {/* Content */}
+          <View style={styles.content}>
+            <Text style={styles.messageText}>
               This will reset the {rateText} rate to 0. Are you sure you want to
               proceed?
             </Text>
 
-            {/* Buttons */}
-            <View className="flex-row justify-between space-x-3 mt-5 gap-6">
+            {/* Action Buttons */}
+            <View style={styles.buttonContainer}>
               <TouchableOpacity
                 onPress={onCancel}
-                className="flex-1 py-3 px-4 rounded-lg border border-gray-300"
+                style={[styles.button, styles.cancelButton]}
               >
-                <Text className="text-center font-medium text-gray-600">
-                  Cancel
-                </Text>
+                <Text style={styles.cancelButtonText}>Cancel</Text>
               </TouchableOpacity>
 
               <TouchableOpacity
                 onPress={onConfirm}
-                className="flex-1 py-3 px-4 rounded-lg bg-red-500"
+                style={[styles.button, styles.deleteButton]}
               >
-                <Text className="text-center font-medium text-white">
-                  Delete
-                </Text>
+                <Text style={styles.deleteButtonText}>Delete</Text>
               </TouchableOpacity>
             </View>
           </View>
         </View>
-      </View>
+      </BlurView>
     </Modal>
   );
 };
+
+const styles = StyleSheet.create({
+  blurContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 24,
+  },
+  modalContainer: {
+    width: "100%",
+    maxWidth: 320,
+    backgroundColor: "white",
+    borderRadius: 16,
+    overflow: "hidden",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+  },
+  header: {
+    backgroundColor: "rgba(254, 226, 226, 0.8)",
+    padding: 24,
+    alignItems: "center",
+  },
+  iconContainer: {
+    backgroundColor: "rgba(254, 202, 202, 0.8)",
+    padding: 16,
+    borderRadius: 50,
+    marginBottom: 12,
+  },
+  headerText: {
+    fontSize: 20,
+    fontWeight: "600",
+    color: "#DC2626",
+  },
+  content: {
+    padding: 24,
+  },
+  messageText: {
+    fontSize: 16,
+    color: "#4B5563",
+    textAlign: "center",
+    lineHeight: 24,
+  },
+  buttonContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginTop: 24,
+    gap: 12,
+  },
+  button: {
+    flex: 1,
+    paddingVertical: 14,
+    borderRadius: 12,
+    alignItems: "center",
+  },
+  cancelButton: {
+    backgroundColor: "white",
+    borderWidth: 1,
+    borderColor: "#E5E7EB",
+  },
+  deleteButton: {
+    backgroundColor: "#DC2626",
+  },
+  cancelButtonText: {
+    color: "#374151",
+    fontWeight: "500",
+  },
+  deleteButtonText: {
+    color: "white",
+    fontWeight: "500",
+  },
+});
 
 export default DeleteModal;
