@@ -23,7 +23,7 @@ const WelcomeText = () => (
 
 // Component for navigation buttons
 interface NavigationButtonProps {
-  href: string;
+  href: any;
   label: string;
   primary?: boolean;
 }
