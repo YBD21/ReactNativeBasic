@@ -1,10 +1,11 @@
-import React from "react";
 import { View, Text, ScrollView } from "react-native";
 import { StatusBar } from "expo-status-bar";
+import { Stack } from "expo-router";
 
 const AboutPage = () => {
   return (
     <>
+      <Stack.Screen options={{ title: "About" }} />
       <StatusBar style="dark" />
       <ScrollView className="flex-1 bg-white">
         <View className="p-5">
