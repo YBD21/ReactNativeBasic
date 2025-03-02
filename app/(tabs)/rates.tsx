@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   TextInput,
   Alert,
+  Modal,
 } from "react-native";
 import { Stack } from "expo-router";
 import { FontAwesome, MaterialIcons } from "@expo/vector-icons";
@@ -144,24 +145,88 @@ export default function Rates() {
     }));
   };
 
+  const [deleteModalVisible, setDeleteModalVisible] = useState(false);
+  const [deleteRateType, setDeleteRateType] = useState<
+    "depo" | "retail" | null
+  >(null);
+
   const handleDeleteRate = (type: "depo" | "retail") => {
-    Alert.alert(
-      "Confirm Delete",
-      `Are you sure you want to delete the ${
-        type === "depo" ? "Depo" : "Retail"
-      } rate?`,
-      [
-        { text: "Cancel", style: "cancel" },
-        {
-          text: "Delete",
-          style: "destructive",
-          onPress: () => {
-            type === "depo" ? setDepoRate(0) : setRetailRate(0);
-          },
-        },
-      ]
-    );
+    setDeleteModalVisible(true);
+    setDeleteRateType(type);
   };
+
+  const confirmDeleteRate = () => {
+    if (deleteRateType) {
+      deleteRateType === "depo" ? setDepoRate(0) : setRetailRate(0);
+    }
+    setDeleteModalVisible(false);
+    setDeleteRateType(null);
+  };
+
+  const cancelDeleteRate = () => {
+    setDeleteModalVisible(false);
+    setDeleteRateType(null);
+  };
+
+  // Render a custom modal for deletion confirmation with icon and custom styles
+  const renderDeleteModal = () => (
+    <Modal
+      transparent
+      animationType="fade"
+      visible={deleteModalVisible}
+      onRequestClose={cancelDeleteRate}
+    >
+      <View
+        style={{
+          flex: 1,
+          backgroundColor: "rgba(0,0,0,0.5)",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <View
+          style={{
+            width: "80%",
+            backgroundColor: "white",
+            borderRadius: 10,
+            padding: 20,
+            alignItems: "center",
+          }}
+        >
+          <MaterialIcons name="delete-outline" size={48} color="#EF4444" />
+          <Text
+            style={{ fontSize: 18, fontWeight: "bold", marginVertical: 10 }}
+          >
+            Delete {deleteRateType === "depo" ? "Depo" : "Retail"} Rate
+          </Text>
+          <Text style={{ textAlign: "center", marginBottom: 20 }}>
+            This will reset the {deleteRateType === "depo" ? "Depo" : "Retail"}{" "}
+            rate to 0. Are you sure you want to proceed?
+          </Text>
+          <View
+            style={{
+              flexDirection: "row",
+              justifyContent: "flex-end",
+              width: "100%",
+            }}
+          >
+            <TouchableOpacity
+              onPress={cancelDeleteRate}
+              style={{ padding: 10 }}
+            >
+              <Text style={{ color: "#666", fontSize: 16 }}>Cancel</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={confirmDeleteRate}
+              style={{ padding: 10, marginLeft: 10 }}
+            >
+              <Text style={{ color: "#EF4444", fontSize: 16 }}>Delete</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </View>
+    </Modal>
+  );
 
   const rateConfigs = [
     {
@@ -222,6 +287,7 @@ export default function Rates() {
             />
           ))}
         </ScrollView>
+        {renderDeleteModal()}
       </View>
     </>
   );
