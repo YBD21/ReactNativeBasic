@@ -13,18 +13,26 @@ import { FontAwesome, MaterialIcons } from "@expo/vector-icons";
 
 export default function Rates() {
   const { depoRate, retailRate, setDepoRate, setRetailRate } = useStore();
-  const [lastUpdated, setLastUpdated] = useState(
-    new Date().toLocaleTimeString()
-  );
+  const [lastUpdated, setLastUpdated] = useState(formatDateTime(new Date()));
   const [editDepoRate, setEditDepoRate] = useState(false);
   const [editRetailRate, setEditRetailRate] = useState(false);
   const [tempDepoRate, setTempDepoRate] = useState(depoRate.toString());
   const [tempRetailRate, setTempRetailRate] = useState(retailRate.toString());
 
+  function formatDateTime(date: Date) {
+    const yyyy = date.getFullYear();
+    const mm = String(date.getMonth() + 1).padStart(2, "0");
+    const dd = String(date.getDate()).padStart(2, "0");
+    const hours = String(date.getHours()).padStart(2, "0");
+    const minutes = String(date.getMinutes()).padStart(2, "0");
+
+    return `Date: ${yyyy}-${mm}-${dd} Time: ${hours}:${minutes}`;
+  }
+
   useEffect(() => {
     setTempDepoRate(depoRate.toString());
     setTempRetailRate(retailRate.toString());
-    setLastUpdated(new Date().toLocaleTimeString());
+    setLastUpdated(formatDateTime(new Date()));
   }, [depoRate, retailRate]);
 
   const handleUpdateRate = (type: "depo" | "retail") => {
@@ -43,7 +51,7 @@ export default function Rates() {
       setRetailRate(newRate);
       setEditRetailRate(false);
     }
-    setLastUpdated(new Date().toLocaleTimeString());
+    setLastUpdated(formatDateTime(new Date()));
   };
 
   const handleCancelEdit = (type: "depo" | "retail") => {
@@ -121,7 +129,7 @@ export default function Rates() {
         </Text>
       )}
       <Text className="text-sm text-gray-600 mb-3">
-        <FontAwesome name="clock-o" size={14} /> Updated: {lastUpdated}
+        <FontAwesome name="clock-o" size={14} /> {lastUpdated}
       </Text>
 
       <View className="flex-row justify-end space-x-2 gap-6">
