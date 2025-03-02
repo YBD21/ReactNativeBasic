@@ -124,7 +124,7 @@ export default function Rates() {
         <FontAwesome name="clock-o" size={14} /> Updated: {lastUpdated}
       </Text>
 
-      <View className="flex-row justify-end space-x-2">
+      <View className="flex-row justify-end space-x-2 gap-6">
         {isEditing ? (
           <>
             <TouchableOpacity
