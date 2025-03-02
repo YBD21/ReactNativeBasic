@@ -27,8 +27,12 @@ const DeleteModal: React.FC<DeleteModalProps> = ({
       visible={visible}
       onRequestClose={onCancel}
     >
-      <BlurView intensity={15} tint="dark" style={styles.blurContainer}>
-        <View style={styles.modalContainer}>
+      <BlurView
+        intensity={15}
+        tint="dark"
+        className="flex-1 justify-center items-center p-6"
+      >
+        <View className="w-full max-w-[320px] bg-white rounded-2xl overflow-hidden shadow-lg">
           {/* Header */}
           <View style={styles.header}>
             <View style={styles.iconContainer}>
