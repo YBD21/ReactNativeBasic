@@ -1,7 +1,5 @@
 # Rate Management & VAT Calculator
 
-A modern, cross-platform mobile application built with Expo and React Native that showcases file-based routing, responsive design, and a streamlined development workflow.
-
 ## Description
 
 This application is a modern, cross-platform mobile tool developed with Expo and React Native, designed for seamless rate management and VAT calculations. It leverages Expo Router for efficient, file-based navigation, ensuring a smooth user experience across different functional areas.
@@ -12,11 +10,12 @@ Whether on Android, iOS, or the web, users can effortlessly update, view, and co
 
 ## Features
 
-- Cross-platform compatibility (iOS, Android, Web)
-- File-based routing with Expo Router
-- Responsive UI/UX design
-- Fast development workflow
-- Component-based architecture
+- Cross-platform support for iOS, Android, and web via Expo.
+- Seamless rate management & VAT calculations.
+- File-based routing implemented with Expo Router for efficient navigation.
+- Component-based architecture for improved maintainability and scalability.
+- State management with Zustand for lightweight yet powerful state handling.
+- Responsive UI powered by NativeWind for Tailwind CSS styling.
 
 ## Installation
 
