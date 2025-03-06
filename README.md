@@ -1,50 +1,82 @@
-# Welcome to your Expo app 👋
+# Rate Management & VAT Calculator
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A modern, cross-platform mobile application built with Expo and React Native that showcases file-based routing, responsive design, and a streamlined development workflow.
 
-## Get started
+## Description
 
-1. Install dependencies
+This application is a modern, cross-platform mobile tool developed with Expo and React Native, designed for seamless rate management and VAT calculations. It leverages Expo Router for efficient, file-based navigation, ensuring a smooth user experience across different functional areas.
 
-   ```bash
-   npm install
-   ```
+Built with a component-based architecture, the app integrates NativeWind for Tailwind CSS styling and Zustand for lightweight yet powerful state management. These technologies work together to provide a responsive, intuitive, and persistent user experience.
 
-2. Start the app
+Whether on Android, iOS, or the web, users can effortlessly update, view, and compute financial rates in real time, making this app an essential tool for professionals who need on-the-go financial calculations with accuracy and ease.
 
-   ```bash
-    npx expo start
-   ```
+## Features
 
-In the output, you'll find options to open the app in a
+- Cross-platform compatibility (iOS, Android, Web)
+- File-based routing with Expo Router
+- Responsive UI/UX design
+- Fast development workflow
+- Component-based architecture
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## Installation
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+Follow these steps to set up and run the project locally:
 
 ```bash
-npm run reset-project
+# Clone the repository
+git clone <repository-url>
+cd my-app
+
+# Install dependencies (choose one)
+npm install   # or yarn install or pnpm install
+
+# Start the development server
+npx expo start
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## Usage
 
-## Learn more
+- **Run on Android:**
 
-To learn more about developing your project with Expo, look at the following resources:
+  ```bash
+  npx expo run:android
+  ```
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+  Press `a` in the terminal to run on an Android emulator.
 
-## Join the community
+- **Run on iOS:**
 
-Join our community of developers creating universal apps.
+  ```bash
+  npx expo run:ios
+  ```
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+  (Requires macOS/Xcode)
+
+- **Use on a physical device:**  
+  Scan the QR code displayed in the terminal with the [Expo Go](https://expo.dev/go) app.
+
+## Technologies Used
+
+- [Expo](https://expo.dev/) - React Native framework
+- [React Native](https://reactnative.dev/) - Cross-platform mobile development
+- [Expo Router](https://docs.expo.dev/router/introduction) - File-based routing
+- [NativeWind](https://nativewind.dev/) - Tailwind CSS for React Native
+- [React Navigation](https://reactnavigation.org/) - Navigation library
+
+## Screenshots
+
+Below are some screenshots showcasing the application:
+
+![App Screenshot 1](./assets/images/screenshot1.png)
+![App Screenshot 2](./assets/images/screenshot2.png)
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
+
+## Contact
+
+For questions, collaborations, or further information, please reach out via:
+
+- Email: [your.email@example.com](mailto:your.email@example.com)
+- Project Link: [https://github.com/yourusername/my-app](https://github.com/yourusername/my-app)
