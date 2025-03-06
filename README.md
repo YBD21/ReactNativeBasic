@@ -72,10 +72,3 @@ Below are some screenshots showcasing the application:
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
-
-## Contact
-
-For questions, collaborations, or further information, please reach out via:
-
-- Email: [your.email@example.com](mailto:your.email@example.com)
-- Project Link: [https://github.com/yourusername/my-app](https://github.com/yourusername/my-app)
